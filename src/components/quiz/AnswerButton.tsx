@@ -2,14 +2,12 @@ import { motion } from 'framer-motion';
 import clsx from 'clsx';
 
 interface AnswerButtonProps {
-  value: number;
   label: string;
   selected: boolean;
   onClick: () => void;
 }
 
 export default function AnswerButton({
-  value,
   label,
   selected,
   onClick,
