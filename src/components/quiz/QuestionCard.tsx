@@ -47,7 +47,6 @@ export default function QuestionCard({ question }: QuestionCardProps) {
             {ANSWER_OPTIONS.map((option) => (
               <AnswerButton
                 key={option.value}
-                value={option.value}
                 label={option.label}
                 selected={selectedAnswer === option.value}
                 onClick={() => handleAnswer(option.value)}
