@@ -10,12 +10,18 @@ export interface AnswerOption {
   label: string;
 }
 
+export interface PersonalitySection {
+  title: string;
+  body: string;
+}
+
 export interface PersonalityResult {
   type: string;
   name: string;
   tagline: string;
   description: string;
   characteristics: string[];
+  sections?: PersonalitySection[];
   color: {
     primary: string;
     secondary: string;
