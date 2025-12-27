@@ -39,7 +39,7 @@ export const questions: Question[] = [
   { id: 32, text: '나만 알고있던 노래가 어느새 유명해져있다.', dimension: 'M', category: 'private-mainstream' },
   { id: 33, text: '음악 차트 상위곡은 적어도 한 번씩 들어본다.', dimension: 'M', category: 'private-mainstream' },
   { id: 34, text: '사람들과 음악 취향을 공유할 때 대화가 잘 풀린다.', dimension: 'M', category: 'private-mainstream' },
-  { id: 35, text: '음악 취향이 비슷한 친구들과 함께 공연을 보러다닌다.', dimension: 'M', category: 'private-mainstream' },
+  { id: 35, text: '음악 취향이 비슷한 친구들과 함께 라이브 공연을 보러가고 싶다.', dimension: 'M', category: 'private-mainstream' },
 
   // Creative vs Logical (C/L)
   { id: 36, text: '음악을 들을 때 즉흥적인 아이디어가 자주 떠오른다.', dimension: 'C', category: 'creative-logical' },
