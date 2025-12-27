@@ -6,23 +6,23 @@ export default function StartPage() {
   const dimensions = [
     {
       icon: '🎨',
-      title: '예술 vs 감각',
+      title: '예술적 vs 감각적',
       subtitle: 'Artistic vs Sensual',
-      description: '메시지 중심 vs 분위기 중심',
+      description: '메시지 중심 vs 느낌 중심',
       gradient: '#EC4899',
     },
     {
       icon: '🎵',
-      title: '개인 vs 대중',
+      title: '개인적 vs 대중적',
       subtitle: 'Private vs Mainstream',
-      description: '내 취향 vs 함께 즐기는 음악',
+      description: '나만의 취향 vs 함께 즐기는 음악',
       gradient: '#6366F1',
     },
     {
       icon: '🎼',
-      title: '창의 vs 분석',
+      title: '창의적 vs 분석적',
       subtitle: 'Creative vs Logical',
-      description: '즉흥적 감각 vs 체계적 완성도',
+      description: '즉흥적인 아이디어 vs 체계적인 완성도',
       gradient: '#8B5CF6',
     },
   ];
