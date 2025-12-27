@@ -19,7 +19,7 @@ export interface PersonalityResult {
   type: string;
   name: string;
   tagline: string;
-  description: string;
+  description?: string;
   characteristics: string[];
   sections?: PersonalitySection[];
   color: {

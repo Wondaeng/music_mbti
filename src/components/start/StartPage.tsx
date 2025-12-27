@@ -85,6 +85,16 @@ export default function StartPage() {
                 <div className="text-body-sm text-text-secondary">분석 차원</div>
               </div>
             </div>
+
+            {/* Disclaimer */}
+            <div className="mt-6 max-w-2xl mx-auto">
+              <div className="rounded-2xl bg-white/40 backdrop-blur-sm border border-black/10 px-6 py-4">
+                <p className="text-body-sm text-text-tertiary leading-relaxed">
+                  이 테스트는 전문적인 진단 소견이 아닙니다. 결과는
+                  재미로만 즐겨주세요!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

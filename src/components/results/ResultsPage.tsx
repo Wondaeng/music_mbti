@@ -128,7 +128,7 @@ export default function ResultsPage() {
 
           {/* Share buttons */}
           <div className="mb-8">
-            <ShareButtons personalityType={results.personalityType} />
+            <ShareButtons personalityName={results.personalityResult.name} />
           </div>
 
           {/* Restart button */}

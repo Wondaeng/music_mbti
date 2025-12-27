@@ -45,37 +45,6 @@ export default function PersonalityCard({ result }: PersonalityCardProps) {
 
         {/* Content */}
         <div className="relative z-10">
-          {/* Personality type badge */}
-          <motion.div
-            className="inline-block px-8 py-3 rounded-full text-h2 font-bold mb-6 relative"
-            style={{
-              background: `linear-gradient(135deg, ${result.color.primary}, ${result.color.secondary})`,
-              color: 'white',
-            }}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3, type: 'spring', stiffness: 200, damping: 15 }}
-          >
-            {/* Pulsing glow behind badge */}
-            <motion.div
-              className="absolute inset-0 rounded-full -z-10"
-              style={{
-                background: `linear-gradient(135deg, ${result.color.primary}, ${result.color.secondary})`,
-                filter: 'blur(20px)',
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-            {result.type}
-          </motion.div>
-
           {/* Name */}
           <motion.h1
             className="text-h2 lg:text-h1 font-bold mb-4"
@@ -94,7 +63,7 @@ export default function PersonalityCard({ result }: PersonalityCardProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            "{result.tagline}"
+            {result.tagline}
           </motion.p>
 
           {sections.length > 0 ? (

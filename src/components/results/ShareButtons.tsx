@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/common/Button';
 
 interface ShareButtonsProps {
-  personalityType: string;
+  personalityName: string;
 }
 
-export default function ShareButtons({ personalityType }: ShareButtonsProps) {
+export default function ShareButtons({ personalityName }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
@@ -17,7 +17,7 @@ export default function ShareButtons({ personalityType }: ShareButtonsProps) {
   };
 
   const handleShare = () => {
-    const text = `나의 음악 MBTI는 ${personalityType}입니다! 당신의 음악 성향은 무엇인가요?`;
+    const text = `나의 음악 MBTI는 ${personalityName}입니다! 당신의 음악 성향은 무엇인가요?`;
     const url = window.location.origin;
 
     if (navigator.share) {
