@@ -25,11 +25,11 @@ export default function PlanBBanner() {
 
         <div className="relative z-10 flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4 sm:gap-5">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 border border-border-default overflow-hidden">
+            <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl bg-white/70 border border-border-default overflow-hidden">
               <img
                 src={planbLogoUrl}
                 alt="Plan.B Academy"
-                className="h-10 w-10 object-contain"
+                className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
                 loading="lazy"
               />
             </div>
