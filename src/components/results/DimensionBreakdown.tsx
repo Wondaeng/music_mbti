@@ -19,6 +19,15 @@ export default function DimensionBreakdown({ scores }: DimensionBreakdownProps) 
     CL: '창의 vs 분석',
   };
 
+  const sideDescriptions: Record<
+    string,
+    { left: string; right: string }
+  > = {
+    AS: { left: 'Artistic', right: 'Sensual' },
+    PM: { left: 'Private', right: 'Mainstream' },
+    CL: { left: 'Creative', right: 'Logical' },
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -72,13 +81,24 @@ export default function DimensionBreakdown({ scores }: DimensionBreakdownProps) 
                 {/* Bar container */}
                 <div className="flex items-center gap-4">
                   {/* Left label */}
-                  <motion.span
-                    className="text-h4 font-bold w-8 text-center"
-                    style={{ color: leftIsDominant ? dimensionColors[score.dimension] : '#9CA3AF' }}
-                    whileHover={{ scale: 1.2 }}
+                  <motion.div
+                    className="w-16 text-center"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    {score.leftLabel}
-                  </motion.span>
+                    <div
+                      className="text-h4 font-bold"
+                      style={{
+                        color: leftIsDominant
+                          ? dimensionColors[score.dimension]
+                          : '#9CA3AF',
+                      }}
+                    >
+                      {score.leftLabel}
+                    </div>
+                    <div className="text-xs font-medium text-text-secondary">
+                      {sideDescriptions[score.dimension].left}
+                    </div>
+                  </motion.div>
 
                   {/* Progress bar - fills both sides from center */}
                   <div className="flex-1 relative h-8 bg-background-secondary rounded-full overflow-hidden shadow-inner group-hover:shadow-lg transition-shadow duration-300">
@@ -126,13 +146,24 @@ export default function DimensionBreakdown({ scores }: DimensionBreakdownProps) 
                   </div>
 
                   {/* Right label */}
-                  <motion.span
-                    className="text-h4 font-bold w-8 text-center"
-                    style={{ color: !leftIsDominant ? dimensionColors[score.dimension] : '#9CA3AF' }}
-                    whileHover={{ scale: 1.2 }}
+                  <motion.div
+                    className="w-16 text-center"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    {score.rightLabel}
-                  </motion.span>
+                    <div
+                      className="text-h4 font-bold"
+                      style={{
+                        color: !leftIsDominant
+                          ? dimensionColors[score.dimension]
+                          : '#9CA3AF',
+                      }}
+                    >
+                      {score.rightLabel}
+                    </div>
+                    <div className="text-xs font-medium text-text-secondary">
+                      {sideDescriptions[score.dimension].right}
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             );
