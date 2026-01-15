@@ -42,14 +42,8 @@ export default function DimensionCard({
 
         {/* Content */}
         <div className="relative z-10">
-          {/* Icon with animation */}
-          <motion.div
-            className="text-5xl mb-4"
-            whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
-            transition={{ duration: 0.5 }}
-          >
-            {icon}
-          </motion.div>
+          {/* Icon */}
+          <div className="text-5xl mb-4">{icon}</div>
 
           {/* Title */}
           <h3 className="text-h4 font-semibold mb-2 group-hover:text-accent-primary transition-colors">

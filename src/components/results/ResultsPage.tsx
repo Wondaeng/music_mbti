@@ -3,6 +3,7 @@ import PageTransition from '@/components/common/PageTransition';
 import PersonalityCard from './PersonalityCard';
 import DimensionBreakdown from './DimensionBreakdown';
 import ShareButtons from './ShareButtons';
+import PlanBBanner from './PlanBBanner';
 import Button from '@/components/common/Button';
 import { useQuizResults } from '@/hooks/useQuizResults';
 import { useQuizStore } from '@/store/quizStore';
@@ -141,6 +142,16 @@ export default function ResultsPage() {
             <Button variant="ghost" onClick={restartQuiz}>
               다시 테스트하기
             </Button>
+          </motion.div>
+
+          {/* External banner */}
+          <motion.div
+            className="mt-10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <PlanBBanner />
           </motion.div>
         </div>
       </div>
