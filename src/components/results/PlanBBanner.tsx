@@ -1,4 +1,4 @@
-import planbLogoUrl from '@/assets/logo_horizontal.jpg';
+import planbLogoUrl from '@/assets/logo.png';
 
 export default function PlanBBanner() {
 
@@ -25,10 +25,13 @@ export default function PlanBBanner() {
 
         <div className="relative z-10 flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4 sm:gap-5">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-background-secondary border border-border-default">
-              <span className="text-2xl" aria-hidden>
-                🎹
-              </span>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 border border-border-default overflow-hidden">
+              <img
+                src={planbLogoUrl}
+                alt="Plan.B Academy"
+                className="h-10 w-10 object-contain"
+                loading="lazy"
+              />
             </div>
 
             <div className="min-w-0">
@@ -42,15 +45,6 @@ export default function PlanBBanner() {
           </div>
 
           <div className="flex items-center justify-between gap-4 sm:justify-end">
-            <div className="shrink-0 rounded-2xl bg-white/70 border border-border-default px-5 py-3">
-              <img
-                src={planbLogoUrl}
-                alt="Plan.B Academy"
-                className="h-12 sm:h-14 w-auto object-contain opacity-95 transition-opacity duration-300 group-hover:opacity-100"
-                loading="lazy"
-              />
-            </div>
-
             <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary px-5 py-2.5 text-body-sm font-semibold text-white shadow-lg shadow-accent-primary/20 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-accent-primary/30">
               사이트 방문하기
               <span aria-hidden className="text-lg leading-none">
