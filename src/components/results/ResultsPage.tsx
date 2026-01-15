@@ -127,6 +127,16 @@ export default function ResultsPage() {
             <DimensionBreakdown scores={results.dimensionScores} />
           </div>
 
+          {/* External banner */}
+          <motion.div
+            className="mb-10 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <PlanBBanner />
+          </motion.div>
+
           {/* Share buttons */}
           <div className="mb-8">
             <ShareButtons personalityName={results.personalityResult.name} />
@@ -142,16 +152,6 @@ export default function ResultsPage() {
             <Button variant="ghost" onClick={restartQuiz}>
               다시 테스트하기
             </Button>
-          </motion.div>
-
-          {/* External banner */}
-          <motion.div
-            className="mt-10"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <PlanBBanner />
           </motion.div>
         </div>
       </div>
