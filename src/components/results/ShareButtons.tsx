@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/common/Button';
+import { shareKakaoText } from '@/utils/kakao';
 
 interface ShareButtonsProps {
   personalityName: string;
@@ -16,9 +17,12 @@ export default function ShareButtons({ personalityName }: ShareButtonsProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const text = `나의 음악 MBTI는 ${personalityName}입니다! 당신의 음악 성향은 무엇인가요?`;
     const url = window.location.origin;
+
+    const kakaoShared = await shareKakaoText({ text, url });
+    if (kakaoShared) return;
 
     if (navigator.share) {
       navigator.share({
@@ -43,7 +47,7 @@ export default function ShareButtons({ personalityName }: ShareButtonsProps) {
       className="max-w-3xl mx-auto"
     >
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="secondary" onClick={handleShare} className="relative">
+        <Button variant="secondary" onClick={() => void handleShare()} className="relative">
           공유하기
         </Button>
 

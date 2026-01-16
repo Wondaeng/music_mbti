@@ -1,5 +1,20 @@
 # 음악 MBTI
 
+## 개발 실행
+
+- 설치: `npm install`
+- 개발 서버: `npm run dev`
+
+## 카카오톡 공유(웹)
+
+이 프로젝트의 결과 페이지 공유 버튼은 **카카오톡 공유(JS SDK)** 를 우선 사용하고, 불가능한 경우(키 미설정/SDK 로드 실패 등)에는 Web Share API/트위터 공유로 폴백합니다.
+
+1) 카카오디벨로퍼스 콘솔에서 앱 생성 후 **JavaScript 키**를 준비
+2) 카카오디벨로퍼스 콘솔의 **[제품 링크 관리] > [웹 도메인]** 에 배포 도메인(로컬 테스트면 `localhost` 포함)을 등록
+3) 프로젝트 루트에 환경변수 설정
+	- `.env.local`에 `VITE_KAKAO_JS_KEY=...` 추가
+	- 예시는 `.env.example` 참고
+
 ## 유형 분류
 1. 예술 vs 감각 (A - Artistic vs S - Sensual)
 2. 개인 vs 대중 (P - Private vs M - Mainstream)
