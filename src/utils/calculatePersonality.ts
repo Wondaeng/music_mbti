@@ -1,5 +1,19 @@
-import { ScoreBreakdown, DimensionScore } from '@/types';
-import { QUESTION_MAPPING } from '@/data/scoring';
+import { ScoreBreakdown, DimensionScore, Question } from '@/types';
+import { questions } from '@/data/questions';
+
+const QUESTION_DIMENSION_BY_ID = new Map<number, Question['dimension']>(
+  questions.map((q) => [q.id, q.dimension])
+);
+
+function applyBipolar(
+  scores: ScoreBreakdown,
+  value: number,
+  primary: keyof ScoreBreakdown,
+  opposite: keyof ScoreBreakdown
+) {
+  if (value > 0) scores[primary] += value;
+  else if (value < 0) scores[opposite] += -value;
+}
 
 /**
  * Calculate raw scores for each dimension
@@ -14,28 +28,32 @@ export function calculateScores(answers: Map<number, number>): ScoreBreakdown {
     logical: 0,
   };
 
-  // Iterate through all answers
+  // Iterate through all answers (bipolar scoring per question dimension)
   answers.forEach((value, questionId) => {
-    const questionNumber = questionId + 1; // Convert to 1-based
+    const dimension = QUESTION_DIMENSION_BY_ID.get(questionId);
+    if (!dimension) return;
 
-    // Check which dimension this question belongs to
-    if (QUESTION_MAPPING.artistic.includes(questionNumber)) {
-      scores.artistic += value;
-    }
-    if (QUESTION_MAPPING.sensual.includes(questionNumber)) {
-      scores.sensual += value;
-    }
-    if (QUESTION_MAPPING.private.includes(questionNumber)) {
-      scores.private += value;
-    }
-    if (QUESTION_MAPPING.mainstream.includes(questionNumber)) {
-      scores.mainstream += value;
-    }
-    if (QUESTION_MAPPING.creative.includes(questionNumber)) {
-      scores.creative += value;
-    }
-    if (QUESTION_MAPPING.logical.includes(questionNumber)) {
-      scores.logical += value;
+    switch (dimension) {
+      case 'A':
+        applyBipolar(scores, value, 'artistic', 'sensual');
+        return;
+      case 'S':
+        applyBipolar(scores, value, 'sensual', 'artistic');
+        return;
+      case 'P':
+        applyBipolar(scores, value, 'private', 'mainstream');
+        return;
+      case 'M':
+        applyBipolar(scores, value, 'mainstream', 'private');
+        return;
+      case 'C':
+        applyBipolar(scores, value, 'creative', 'logical');
+        return;
+      case 'L':
+        applyBipolar(scores, value, 'logical', 'creative');
+        return;
+      default:
+        return;
     }
   });
 
@@ -57,15 +75,10 @@ export function calculatePersonalityType(scores: ScoreBreakdown): string {
  * Calculate percentage for dimension bar display
  */
 function calculatePercentage(leftScore: number, rightScore: number): number {
-  // Normalize scores to positive values
-  const normalizedLeft = leftScore + 20;
-  const normalizedRight = rightScore + 20;
-
-  const total = normalizedLeft + normalizedRight;
+  const total = leftScore + rightScore;
   if (total === 0) return 50;
 
-  // Percentage from 0-100 where 50 is balanced
-  return Math.round((normalizedLeft / total) * 100);
+  return Math.round((leftScore / total) * 100);
 }
 
 /**
