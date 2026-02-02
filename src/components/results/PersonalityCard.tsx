@@ -6,8 +6,27 @@ interface PersonalityCardProps {
   result: PersonalityResult;
 }
 
+const RESULT_TYPE_ORDER: string[] = [
+  'AC-P',
+  'AC-M',
+  'AL-P',
+  'AL-M',
+  'SC-P',
+  'SC-M',
+  'SL-P',
+  'SL-M',
+];
+
+function getCharacterImageUrl(type: string): string | null {
+  const index = RESULT_TYPE_ORDER.indexOf(type);
+  if (index < 0) return null;
+  const fileNumber = index + 1;
+  return new URL(`../../assets/characters/${fileNumber}.png`, import.meta.url).href;
+}
+
 export default function PersonalityCard({ result }: PersonalityCardProps) {
   const sections = result.sections ?? [];
+  const characterImageUrl = getCharacterImageUrl(result.type);
 
   const renderBold = (text: string) => {
     const parts = text.split('**');
@@ -45,6 +64,40 @@ export default function PersonalityCard({ result }: PersonalityCardProps) {
 
         {/* Content */}
         <div className="relative z-10">
+          {/* Character */}
+          {characterImageUrl ? (
+            <motion.div
+              className="mx-auto mb-6 relative w-44 h-44 lg:w-52 lg:h-52"
+              initial={{ opacity: 0, y: 16, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.32, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            >
+              {/* Soft glow */}
+              <div
+                className="absolute inset-0 rounded-full blur-2xl opacity-30"
+                style={{ background: `radial-gradient(circle at 30% 20%, ${result.color.primary}, transparent 60%)` }}
+              />
+
+              {/* Ring */}
+              <div
+                className="absolute inset-0 rounded-full p-[3px]"
+                style={{ background: `linear-gradient(135deg, ${result.color.primary}, ${result.color.secondary})` }}
+              >
+                <div className="w-full h-full rounded-full bg-white/90" />
+              </div>
+
+              <motion.img
+                src={characterImageUrl}
+                alt={result.name}
+                className="absolute inset-2 rounded-full object-contain bg-white/0 drop-shadow-xl"
+                whileHover={{ scale: 1.03, rotate: -1 }}
+                transition={{ type: 'spring', stiffness: 220, damping: 16 }}
+                loading="eager"
+                draggable={false}
+              />
+            </motion.div>
+          ) : null}
+
           {/* Name */}
           <motion.h1
             className="text-h2 lg:text-h1 font-bold mb-4"
