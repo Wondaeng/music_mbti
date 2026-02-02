@@ -89,7 +89,7 @@ export default function PersonalityCard({ result }: PersonalityCardProps) {
               <motion.img
                 src={characterImageUrl}
                 alt={result.name}
-                className="absolute inset-2 rounded-full object-contain bg-white/0 drop-shadow-xl"
+                className="absolute inset-2 object-contain bg-white/0 drop-shadow-xl"
                 whileHover={{ scale: 1.03, rotate: -1 }}
                 transition={{ type: 'spring', stiffness: 220, damping: 16 }}
                 loading="eager"
